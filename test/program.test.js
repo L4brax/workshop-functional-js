@@ -26,7 +26,8 @@ describe('Function transformCheckpoint', function() {
     expect(transformCheckpoint()).to.be.false;
   });
   it('Function transformCheckpoint without a parameter should mutate the global var.', function() {
-    expect(transformCheckpoint(chkptTest)).to.be.eql({
+    transformCheckpoint(chkptTest);
+    expect(chkptTest).to.be.eql({
       id: 'whataw0nd3rful1d',
       uuid: 'whataw0nd3rful1d',
       address: 'unknown',
@@ -44,6 +45,6 @@ describe('Function transformCheckpoint', function() {
       state: 'outofcontrol'
     });
   });
-  
+
 
 });
