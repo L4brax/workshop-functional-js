@@ -21,17 +21,17 @@ let transformCheckpoint = (checkpoint) => {
   if (checkpoint) {
     let newChkpt = {};
     // Get back essential properties
-    newChkpt.checkpoint.serviceData = checkpoint.advertisement.serviceData;
-    newChkpt.checkpoint.serviceUuids = checkpoint.advertisement.serviceUuids;
+    newChkpt.serviceData = checkpoint.advertisement.serviceData;
+    newChkpt.serviceUuids = checkpoint.advertisement.serviceUuids;
     // Transform data about distance
-    newChkpt.checkpoint.distance = calculateDistanceWithRssi(checkpoint.rssi);
+    newChkpt.distance = calculateDistanceWithRssi(checkpoint.rssi);
     // Clean uninteresting properties
-    delete newChkpt.checkpoint.id;
-    delete newChkpt.checkpoint.address;
-    delete newChkpt.checkpoint.addressType;
-    delete newChkpt.checkpoint.advertisement;
-    delete newChkpt.checkpoint.rssi;
-    delete newChkpt.checkpoint.services;
+    delete newChkpt.id;
+    delete newChkpt.address;
+    delete newChkpt.addressType;
+    delete newChkpt.advertisement;
+    delete newChkpt.rssi;
+    delete newChkpt.services;
     // Everything is ok
     return newChkpt;
   } else {

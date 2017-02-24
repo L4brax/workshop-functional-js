@@ -25,7 +25,7 @@ describe('Function transformCheckpoint', function() {
   it('Function transformCheckpoint without parameter should return false', function() {
     expect(transformCheckpoint()).to.be.false;
   });
-  it('Ex 1 : Function transformCheckpoint without a parameter should mutate the global var.', function() {
+  it('Ex 2 Correction : Function transformCheckpoint without a parameter should mutate the global var.', function() {
     transformCheckpoint(chkptTest);
     expect(chkptTest).to.be.eql({
       id: 'whataw0nd3rful1d',
@@ -45,7 +45,7 @@ describe('Function transformCheckpoint', function() {
       state: 'outofcontrol'
     });
   });
-  it('Ex 2 : Function transformCheckpoint without a parameter should mutate the global var.', function() {
+  it('Ex 2 : Function transformCheckpoint Should not mutate the global var, for sure.', function() {
     var chkptTested = transformCheckpoint(chkptTest);
     expect(chkptTested).to.be.equal({
       uuid: 'whataw0nd3rful1d',
