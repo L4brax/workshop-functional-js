@@ -45,23 +45,29 @@ let showCheckpoint = (checkpoint, index) => {
   _.map(checkpoint, (prop, key)=>{
     console.log(chalk.cyan(key), prop);
   });
-  // for (var property in checkpoint) {
-  //   if (checkpoint.hasOwnProperty(property)) {
-  //     console.log(chalk.cyan(property.toUpperCase()), checkpoint[property]);
-  //   }
-  // }
   console.log('\n');
 };
 
 let run = () => {
   let checkpoints = checkpointsService.getCheckpoints();
   var i = 0;
-  checkpoints.map((checkpoint)=>{
-    let transformedChkpt = transformCheckpoint(checkpoint);
-    showCheckpoint(transformedChkpt,i);
-    i++;
-    return transformedChkpt;
-  });
+  var checkpointsNice = _.chain(checkpoints)
+    .map((checkpoint)=>{
+      if (checkpoint.distance >= 1) {
+        checkpoint.distance += `m`;
+      } else {
+        checkpoint.distance*100;
+        checkpoint.distance.round;
+        checkpoint.distance += `cm`;
+      }
+    })
+    .sortBy(distance);
+  // checkpointsNice.map((checkpoint)=>{
+  //   let transformedChkpt = transformCheckpoint(checkpoint);
+  //   showCheckpoint(transformedChkpt,i);
+  //   i++;
+  //   return transformedChkpt;
+  // });
 };
 
   // for (var i = 0; i < checkpoints.length; i++) {
